@@ -36,8 +36,28 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { GroupedMovies } from "@/components/GroupedMovies";
+import { MovieType } from "@/lib/movieType";
+import test from "node:test";
 
 export default function Home() {
+  const testMovies: MovieType[] = [
+    {
+      name: "moana",
+      rating: 9,
+      img: ["httpjnanaks"],
+    },
+    {
+      name: "one piece",
+      rating: 10,
+      img: ["httpjnanaks"],
+    },
+    {
+      name: "naruto",
+      rating: 9,
+      img: ["httpjnanaks"],
+    },
+  ];
   return (
     <>
       <nav className="mx-4 px-16 py-[11.5px] flex justify-between ">
@@ -126,22 +146,35 @@ export default function Home() {
           </svg>
         </Button>
       </nav>
-      <div className="w-100 px-[100px]">
+      <div className="flex justify-center ">
         <Carousel
+          className="relative"
           plugins={[
             Autoplay({
               delay: 2000,
             }),
           ]}
         >
-          <CarouselContent>
-            <CarouselItem className="flex justify-center">1</CarouselItem>
-            <CarouselItem className="flex justify-center">2</CarouselItem>
-            <CarouselItem className="flex justify-center">3</CarouselItem>
+          <CarouselContent className="w-[1200px] h-[667px]  ">
+            <CarouselItem>
+              <img src="/photos/wicked.jpg" alt="" className="" />
+            </CarouselItem>
+            <CarouselItem className="flex justify-center ">
+              {" "}
+              <img src="/photos/gladiator.png" alt="" className="w-[1200px]" />
+            </CarouselItem>
+            <CarouselItem>
+              {" "}
+              <img src="/photos/moana.jpg" alt="" className="" />
+            </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="absolute left-5" />
+          <CarouselNext className="absolute right-5" />
         </Carousel>
+      </div>
+      <div className="flex flex-col gap-10">
+        <GroupedMovies text="Upcoming" movies={testMovies}></GroupedMovies>
+        <GroupedMovies text="Popular" movies={testMovies}></GroupedMovies>
       </div>
     </>
   );
