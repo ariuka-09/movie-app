@@ -101,6 +101,39 @@ export default function Home() {
     { category: "Popular", movieType: popular },
     { category: "Top Rated", movieType: topRated },
   ];
+  const genres = [
+    "Action",
+    "Adventure",
+    "Comedy",
+    "Drama",
+    "Horror",
+    "Thriller",
+    "Science Fiction",
+    "Fantasy",
+    "Romance",
+    "Mystery",
+    "Crime",
+    "Documentary",
+    "Animation",
+    "Musical",
+    "War",
+    "Western",
+    "Historical",
+    "Biographical",
+    "Family",
+    "Sport",
+    "Romantic Comedy",
+    "Action-Comedy",
+    "Horror-Comedy",
+    "Sci-Fi Thriller",
+    "Fantasy Adventure",
+    "Psychological Thriller",
+    "Docudrama",
+    "Superhero",
+    "Post-Apocalyptic",
+    "Mockumentary",
+  ];
+
   return (
     <>
       <nav className="mx-4 px-16 py-[11.5px] flex justify-between ">
@@ -147,11 +180,20 @@ export default function Home() {
         <div className="flex">
           <DropdownMenu>
             <DropdownMenuTrigger className="">Genre</DropdownMenuTrigger>
-            <DropdownMenuContent className="items-center flex flex-col min-w-[fit] ">
-              <DropdownMenuItem className="  ">Horror</DropdownMenuItem>
-              <DropdownMenuItem>Comedy</DropdownMenuItem>
-              <DropdownMenuItem>Thriller</DropdownMenuItem>
-              <DropdownMenuItem>Action</DropdownMenuItem>
+            <DropdownMenuContent className="flex flex-col">
+              <div className="px-10 py-5">
+                <p className="font-bold text-[25px] ">Genres</p>
+                <p>See lists of movies by genre</p>
+              </div>
+              <div className="items-center flex flex-wrap min-w-[fit] w-[40vw] gap-3 p-5">
+                {genres.map((genre) => {
+                  return (
+                    <DropdownMenuItem className="border-[1px] rounded-4xl font-[600] ">
+                      {genre + ` >`}
+                    </DropdownMenuItem>
+                  );
+                })}
+              </div>
             </DropdownMenuContent>
           </DropdownMenu>
 
