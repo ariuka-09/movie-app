@@ -41,7 +41,7 @@ import { MovieType } from "@/lib/movieType";
 import test from "node:test";
 
 export default function Home() {
-  const testMovies: MovieType[] = [
+  const upcoming: MovieType[] = [
     {
       name: "moana",
       rating: 9,
@@ -57,6 +57,49 @@ export default function Home() {
       rating: 9,
       img: ["httpjnanaks"],
     },
+  ];
+  const popular: MovieType[] = [
+    {
+      name: "moana",
+      rating: 9,
+      img: ["httpjnanaks"],
+    },
+    {
+      name: "one piece",
+      rating: 10,
+      img: ["httpjnanaks"],
+    },
+    {
+      name: "naruto",
+      rating: 9,
+      img: ["httpjnanaks"],
+    },
+  ];
+  const topRated: MovieType[] = [
+    {
+      name: "moana",
+      rating: 9,
+      img: ["httpjnanaks"],
+    },
+    {
+      name: "one piece",
+      rating: 10,
+      img: ["httpjnanaks"],
+    },
+    {
+      name: "naruto",
+      rating: 9,
+      img: ["httpjnanaks"],
+    },
+  ];
+  type MoviesCategory = {
+    category: string;
+    movieType: MovieType[];
+  };
+  const movies: MoviesCategory[] = [
+    { category: "Upcoming", movieType: upcoming },
+    { category: "Popular", movieType: popular },
+    { category: "Top Rated", movieType: topRated },
   ];
   return (
     <>
@@ -172,10 +215,18 @@ export default function Home() {
           <CarouselNext className="absolute right-5" />
         </Carousel>
       </div>
-      <div className="flex flex-col gap-10">
-        <GroupedMovies text="Upcoming" movies={testMovies}></GroupedMovies>
-        <GroupedMovies text="Popular" movies={testMovies}></GroupedMovies>
-      </div>
+      {
+        <div className="flex flex-col gap-10">
+          {movies.map((movie) => {
+            return (
+              <GroupedMovies
+                movies={movie.movieType}
+                text={movie.category}
+              ></GroupedMovies>
+            );
+          })}
+        </div>
+      }
     </>
   );
 }
