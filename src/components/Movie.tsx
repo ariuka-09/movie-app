@@ -3,8 +3,12 @@ import { MovieType } from "@/lib/movieType";
 export function Movie(props: { movie: MovieType }) {
   const { movie } = props;
   return (
-    <div className="w-[230px] h-[439px] rounded-[8px] bg-[#F4F4F5] ">
-      <img src={movie.img[0]} alt="" height={85} />
+    <div className="w-[230px] h-[439px] rounded-[8px] bg-[#F4F4F5] overflow-hidden ">
+      <img
+        src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+        alt=""
+        height={85}
+      />
       <div>
         <div className="rating flex">
           <svg
@@ -22,10 +26,10 @@ export function Movie(props: { movie: MovieType }) {
               strokeLinejoin="round"
             />
           </svg>{" "}
-          {movie.rating}
+          {movie.vote_average}
           <p> / 10</p>
         </div>
-        <p className="name">{movie.name}</p>
+        <p className="name">{movie.title}</p>
       </div>
     </div>
   );

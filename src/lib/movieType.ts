@@ -1,5 +1,5 @@
 export type MovieType = {
-  name: string;
-  rating: number;
-  img: string[];
+  title: string;
+  vote_average: number;
+  poster_path: string;
 };
