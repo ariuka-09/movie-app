@@ -24,7 +24,7 @@ export function Footer() {
             <p className="text-white">© 2024 Movie Z. All Rights Reserved.</p>
           </div>
         </div>
-        <div>
+        <div className="flex gap-30">
           <div className="ml-92 text-white flex flex-col gap-3">
             <p>Contact Information</p>
             <div className="flex flex-col gap-6">
