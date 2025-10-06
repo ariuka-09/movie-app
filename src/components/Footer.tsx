@@ -1,7 +1,7 @@
 export function Footer() {
   return (
     <div className="h-70 bg-[#4338CA] px-20 py-10">
-      <div className="flex">
+      <div className="flex gap-30">
         <div className="flex flex-col gap-3 w-fit">
           <div className="flex gap-2">
             <svg
@@ -24,9 +24,9 @@ export function Footer() {
             <p className="text-white">© 2024 Movie Z. All Rights Reserved.</p>
           </div>
         </div>
-        <div>
+        <div className="ml-92 text-white flex flex-col gap-3">
           <p>Contact Information</p>
-          <div className="">
+          <div className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,6 +77,15 @@ export function Footer() {
             </div>
           </div>
           <div></div>
+        </div>
+        <div className="flex flex-col gap-3 text-white">
+          <p className="">Follow us</p>
+          <div className="flex gap-3">
+            <p>Facebook</p>
+            <p>Instagram</p>
+            <p>Twitter</p>
+            <p>Youtube</p>
+          </div>
         </div>
       </div>
     </div>
