@@ -2,25 +2,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { Button } from "./ui/button";
 import { ModeToggle } from "./Theme";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@radix-ui/react-popover";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@radix-ui/react-navigation-menu";
 import axios from "axios";
 
 export async function Navbar() {
@@ -58,27 +43,6 @@ export async function Navbar() {
         </svg>
         <p className="text-[#4338CA] text-[16px] italic font-[700] ">Movie Z</p>
       </div>
-      {/* <NavigationMenu>
-        <NavigationMenuList className="flex gap-3">
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Genre</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <NavigationMenuLink>
-                <Button>Comedy</Button>
-              </NavigationMenuLink>
-            </NavigationMenuContent>
-            <NavigationMenuContent>
-              <NavigationMenuLink>Horror</NavigationMenuLink>
-            </NavigationMenuContent>
-            <NavigationMenuContent>
-              <NavigationMenuLink>Thriller</NavigationMenuLink>
-            </NavigationMenuContent>
-            <NavigationMenuContent>
-              <NavigationMenuLink>Action</NavigationMenuLink>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu> */}
       <div className="flex z-10">
         <DropdownMenu>
           <DropdownMenuTrigger className="">Genre</DropdownMenuTrigger>
