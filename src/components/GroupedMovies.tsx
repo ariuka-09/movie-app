@@ -1,5 +1,5 @@
 import { MovieType } from "@/lib/movieType";
-import { Movie } from "./Movie";
+import { Movie } from "./MovieCard";
 export function GroupedMovies(props: { movies: MovieType[]; text: string }) {
   //aldaa garval end baih magadlal undur
   const { movies, text } = props;

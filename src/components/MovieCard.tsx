@@ -1,9 +1,18 @@
+"use client";
 import { MovieType } from "@/lib/movieType";
+import { useRouter } from "next/navigation";
 
 export function Movie(props: { movie: MovieType }) {
   const { movie } = props;
+  const router = useRouter();
+  const handleOnClick = () => {
+    router.push(`/moviePage/${movie.id}`);
+  };
   return (
-    <div className="w-[230px] h-[439px] rounded-[8px] bg-[#F4F4F5] overflow-hidden ">
+    <div
+      onClick={handleOnClick}
+      className="w-[230px] h-[439px] rounded-[8px] bg-[#F4F4F5] overflow-hidden "
+    >
       <img
         src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
         alt=""

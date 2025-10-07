@@ -1,6 +1,5 @@
 import * as React from "react";
 import { GroupedMovies } from "@/components/GroupedMovies";
-import { MovieType } from "@/lib/movieType";
 import { CarouselComponent } from "@/components/Carousel";
 import { Movies } from "@/components/Movies";
 
