@@ -18,13 +18,17 @@ export async function DetailImages({ id }: { id: string }) {
   };
   const movie = await getImages();
   return (
-    <div>
-      {
-        <img
-          src={" https://image.tmdb.org/t/p/w500" + movie.backdrop_path}
-          alt=""
-        ></img>
-      }
+    <div className="flex gap-8 w-fit">
+      <img
+        className="w-[290px] "
+        src={" https://image.tmdb.org/t/p/w500" + movie.poster_path}
+        alt=""
+      ></img>
+      <img
+        className="w-[788px] "
+        src={" https://image.tmdb.org/t/p/w500" + movie.backdrop_path}
+        alt=""
+      />
     </div>
   );
 }
