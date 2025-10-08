@@ -1,5 +1,6 @@
 import { DetailHeader } from "@/components/DetailHeader";
 import { DetailImages } from "@/components/DetailImages";
+import { DetailRelatedMovies } from "@/components/DetailRelatedMovies";
 import { DetailTexts } from "@/components/DetailTexts";
 import axios from "axios";
 
@@ -29,6 +30,7 @@ export default async function moviePage({
         <DetailHeader id={id}></DetailHeader>
         <DetailImages id={id}></DetailImages>
         <DetailTexts id={id}></DetailTexts>
+        <DetailRelatedMovies id={id}></DetailRelatedMovies>
       </div>
     </div>
   );

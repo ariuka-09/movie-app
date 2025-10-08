@@ -29,6 +29,7 @@ export async function DetailTexts({ id }: { id: string }) {
     return directors;
   };
   const directors = getDirectors();
+
   const getWriters = () => {
     const directors = creditInfo.crew.filter(
       (member: { department: string }) => {
@@ -42,8 +43,21 @@ export async function DetailTexts({ id }: { id: string }) {
   };
   const writers = getWriters();
 
+  const getStars = () => {
+    const directors = creditInfo.cast.filter(
+      (member: { department: string }) => {
+        if (member.department === "Writing") {
+          return true;
+        }
+      }
+    );
+    console.log(directors);
+    return directors;
+  };
+  const stars = getStars();
+
   return (
-    <div>
+    <div className="flex flex-col gap-5">
       <div className="flex gap-2">
         {info.genres.map((genre: { name: string }) => {
           return (
@@ -67,6 +81,12 @@ export async function DetailTexts({ id }: { id: string }) {
         {writers.map((writer: { name: string }) => {
           return <div>Ariuka</div>;
         })}
+      </div>
+      <div className="flex gap-3">
+        <p>Stars</p>
+        <p>{creditInfo.cast[0].name} </p>
+        <p>{creditInfo.cast[1].name} </p>
+        <p>{creditInfo.cast[2].name} </p>
       </div>
       <div></div>
       <div></div>
