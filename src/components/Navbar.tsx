@@ -19,7 +19,7 @@ export async function Navbar() {
         },
       }
     );
-    console.log(response.data.genres);
+
     return response.data.genres;
   };
   const genres = await getGenres();

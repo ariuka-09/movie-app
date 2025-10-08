@@ -11,7 +11,6 @@ export async function DetailHeader({ id }: { id: string }) {
         },
       }
     );
-    console.log(response.data);
     return response.data;
   };
   const selectedMovie = await getSelectedMovie();

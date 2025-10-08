@@ -13,19 +13,19 @@ export async function DetailImages({ id }: { id: string }) {
         },
       }
     );
-    console.log(id);
+
     return response.data;
   };
   const movie = await getImages();
   return (
-    <div className="flex gap-8 w-fit">
+    <div className="flex gap-8 w-full">
       <img
-        className="w-[290px] "
+        className="w-[30%] "
         src={" https://image.tmdb.org/t/p/w500" + movie.poster_path}
         alt=""
       ></img>
       <img
-        className="w-[788px] "
+        className="w-[70%] "
         src={" https://image.tmdb.org/t/p/w500" + movie.backdrop_path}
         alt=""
       />
