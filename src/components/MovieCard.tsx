@@ -14,7 +14,7 @@ export function Movie(props: { movie: MovieType; type?: string }) {
       className={
         !type
           ? `w-[230px] h-[439px] rounded-[8px] bg-[#F4F4F5] overflow-hidden `
-          : `w-[180px] h-[360px] rounded-[8px] bg-[#F4F4F5] overflow-hidden `
+          : `w-[15%]  rounded-[8px] bg-[#F4F4F5] overflow-hidden `
       }
     >
       <img
