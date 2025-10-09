@@ -1,7 +1,5 @@
 import { axiosInstance } from "@/lib/utils";
-import axios from "axios";
-import { headers } from "next/headers";
-import Image from "next/image";
+
 
 export async function DetailImages({ id }: { id: string }) {
   const getImages = async () => {

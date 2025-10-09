@@ -1,38 +1,32 @@
-import axios from "axios";
+import { axiosInstance } from "@/lib/utils";
 
 export async function DetailHeader({ id }: { id: string }) {
   const getSelectedMovie = async () => {
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjI5ZmNiMGRmZTNkMzc2MWFmOWM0YjFjYmEyZTg1NiIsIm5iZiI6MTc1OTcxMTIyNy43OTAwMDAyLCJzdWIiOiI2OGUzMGZmYjFlN2Y3MjAxYjI5Y2FiYmIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.M0DQ3rCdsWnMw8U-8g5yGXx-Ga00Jp3p11eRyiSxCuY",
-        },
-      }
-    );
+    const response = await axiosInstance.get(`movie/${id}?language=en-US`)
     return response.data;
   };
   const selectedMovie = await getSelectedMovie();
   return (
     <div className="flex justify-between mb-6">
-      <div>
+       <div>
         <p className="text-[36px] font-[700] ">{selectedMovie.title} </p>
-        <div className="flex gap-2">
-          <p> {selectedMovie.release_date}</p>
-          <p>·</p>
+            <div className="flex gap-2">
+           <p> {selectedMovie.release_date}</p>
+            <p>·</p>
           <div className="flex gap-1">
-            <p>{Math.floor(selectedMovie.runtime / 60)}h</p>
-            <p>{selectedMovie.runtime % 60}m </p>
+              <p>{Math.floor(selectedMovie.runtime / 60)}h</p>
+              <p>{selectedMovie.runtime % 60}m </p>
           </div>
         </div>
+
       </div>
       <div className="">
         <p>Rating</p>
+
         <div className=" flex items-center gap-2">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="28"
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
             height="28"
             viewBox="0 0 28 28"
             fill="none"

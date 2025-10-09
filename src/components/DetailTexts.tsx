@@ -1,19 +1,16 @@
 import { axiosInstance } from "@/lib/utils";
-import axios from "axios";
-import { headers } from "next/headers";
-import { log } from "node:console";
 
 export async function DetailTexts({ id }: { id: string }) {
   const getInfo = async () => {
     const info = await axiosInstance.get(`movie/${id}?language=en-US`);
 
-    return info.data;
-  };
-  const info = await getInfo();
+      return info.data;
+  };    
+   const info = await getInfo();
 
   const getCreditInfo = async () => {
     const creditInfo = await axiosInstance.get(
-      `/movie/${id}/credits?language=en-US`
+                `/movie/${id}/credits?language=en-US`
     );
     return creditInfo.data;
   };

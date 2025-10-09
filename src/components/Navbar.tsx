@@ -6,21 +6,12 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { ModeToggle } from "./Theme";
-import axios from "axios";
-import { useRouter } from "next/router";
 import { Movie_Z } from "./Movie_Z";
+import { axiosInstance } from "@/lib/utils";
 
 export async function Navbar() {
   const getGenres = async () => {
-    const response = await axios.get(
-      "https://api.themoviedb.org/3/genre/movie/list?language=en",
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjI5ZmNiMGRmZTNkMzc2MWFmOWM0YjFjYmEyZTg1NiIsIm5iZiI6MTc1OTcxMTIyNy43OTAwMDAyLCJzdWIiOiI2OGUzMGZmYjFlN2Y3MjAxYjI5Y2FiYmIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.M0DQ3rCdsWnMw8U-8g5yGXx-Ga00Jp3p11eRyiSxCuY",
-        },
-      }
-    );
+    const response = await axiosInstance.get("genre/movie/list?language=en")
 
     return response.data.genres;
   };
