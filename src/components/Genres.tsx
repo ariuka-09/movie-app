@@ -14,7 +14,7 @@ export  function Genres(props:{genres: {name:string; id:number}[] }){
         return true;
       }
     })
-    router.push(`genrePageDynamic/${genre[0].id}`)
+    router.push(`/genrePageDynamic/${genre[0].id}`)
   }
     return(
 <DropdownMenu>
