@@ -45,7 +45,7 @@ export async function DetailTexts({ id }: { id: string }) {
       <div className="flex gap-2">
         {info.genres.map((genre: { name: string }) => {
           return (
-            <div className="border rounded-2xl px-2 text-[12px] ">
+            <div key={Math.random()} className="border rounded-2xl px-2 text-[12px] ">
               {genre.name}
             </div>
           );
@@ -57,13 +57,13 @@ export async function DetailTexts({ id }: { id: string }) {
       <div className="flex gap-3">
         <p>Director</p>
         {directors.map((director: { name: string }) => {
-          return <div>{director.name}</div>;
+          return <div key={Math.random()} >{director.name}</div>;
         })}
       </div>
       <div className="flex gap-3">
         <p>Writers</p>
         {writers.map((writer: { name: string }) => {
-          return <div>{writer.name} </div>;
+          return <div key={Math.random()} >{writer.name} </div>;
         })}
       </div>
       <div className="flex gap-3">

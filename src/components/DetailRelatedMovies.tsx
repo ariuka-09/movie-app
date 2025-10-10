@@ -23,7 +23,7 @@ export async function DetailRelatedMovies({ id }: { id: string }) {
   return (
     <div className="flex flex-wrap justify-between">
       {relatedMovies.splice(0, 5).map((relatedMovie: MovieType) => {
-        return <Movie type="related" movie={relatedMovie}></Movie>;
+        return <Movie key={Math.random()} type="related" movie={relatedMovie}></Movie>;
       })}
     </div>
   );

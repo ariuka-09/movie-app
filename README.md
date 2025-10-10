@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Todo list
+
+- [ ] create Next App
+- [ ] set ShadCN
+- [ ] Create Navbar component
+ -  apply Theme using shadCN
+ - customize shadCN theme 
+ - link the logo to its homepage
+ - add genre section using dropdown from shadCN
+ - get genres from the backend and map it
+- [ ] add carousel element with 3 pictures using shadCN Carousel component
+ - apply autoplay
+- [ ] Create Movies component which returns Popular, Upcoming, Top Rated movies' lists
+- [ ] create MovieCard component   
+ - apply useRouter to its biggest parent div which is linked to a dynamic page
+- [ ] create GroupedMovieCard component 
+ - 
