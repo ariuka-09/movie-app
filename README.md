@@ -48,6 +48,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] add carousel element with 3 pictures using shadCN Carousel component
  - apply autoplay
 - [ ] Create Movies component which returns Popular, Upcoming, Top Rated movies' lists
+ -
 - [ ] create MovieCard component   
  - apply useRouter to its biggest parent div which is linked to a dynamic page
 - [ ] create GroupedMovieCard component 
