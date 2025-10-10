@@ -1,10 +1,12 @@
 "use client";
 import { MovieType } from "@/lib/movieType";
+import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 
 export function Movie(props: { movie: MovieType; type?: string }) {
   const { movie, type } = props;
   const router = useRouter();
+  const {theme, setTheme} = useTheme();
   const handleOnClick = () => {
     router.push(`/moviePage/${movie.id}`);
   };
@@ -12,9 +14,16 @@ export function Movie(props: { movie: MovieType; type?: string }) {
     <div
       onClick={handleOnClick}
       className={
-        !type
-          ? `w-[230px] h-[439px] rounded-[8px] bg-[#F4F4F5] overflow-hidden `
-          : `w-[15%]  rounded-[8px] bg-[#F4F4F5] overflow-hidden `
+        theme === "light" ? (  !type
+          ? ` w-[230px] h-[439px] rounded-[8px] bg-[#F4F4F5] overflow-hidden `
+          : ` w-[15%]  rounded-[8px] bg-[#F4F4F5] overflow-hidden `
+
+        ) : (  !type
+          ? ` w-[230px] h-[439px] rounded-[8px] bg-[#27272A] overflow-hidden `
+          : ` w-[15%]  rounded-[8px] bg-[#27272A] overflow-hidden `
+
+        ) 
+      
       }
     >
       <img
@@ -22,7 +31,7 @@ export function Movie(props: { movie: MovieType; type?: string }) {
         alt=""
         height={85}
       />
-      <div>
+      <div className="p-2" >
         <div className="rating flex">
           <svg
             xmlns="http://www.w3.org/2000/svg"

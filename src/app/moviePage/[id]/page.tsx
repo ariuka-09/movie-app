@@ -2,7 +2,6 @@ import { DetailHeader } from "@/components/DetailHeader";
 import { DetailImages } from "@/components/DetailImages";
 import { DetailRelatedMovies } from "@/components/DetailRelatedMovies";
 import { DetailTexts } from "@/components/DetailTexts";
-import axios from "axios";
 
 export default async function moviePage({
   params,

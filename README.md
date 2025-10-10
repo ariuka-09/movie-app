@@ -37,19 +37,31 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Todo list
 
-- [ ] create Next App
-- [ ] set ShadCN
-- [ ] Create Navbar component
+- [x] create Next App
+- [x] set ShadCN
+- [x] Create Navbar component
  -  apply Theme using shadCN
  - customize shadCN theme 
  - link the logo to its homepage
  - add genre section using dropdown from shadCN
  - get genres from the backend and map it
-- [ ] add carousel element with 3 pictures using shadCN Carousel component
+- [x] add carousel element with 3 pictures using shadCN Carousel component
  - apply autoplay
-- [ ] Create Movies component which returns Popular, Upcoming, Top Rated movies' lists
- -
-- [ ] create MovieCard component   
+- [x] Create Movies component which returns Popular, Upcoming, Top Rated movies' lists
+ - Modify the use of axios to axiosInstance
+ - Create and use .env file to hide API token from git pushes
+ - Use axiosInstance to fetch the data
+- [x] create MovieCard component   
  - apply useRouter to its biggest parent div which is linked to a dynamic page
-- [ ] create GroupedMovieCard component 
- - 
+- [x] create GroupedMovieCard component 
+ - Map MovieCard component with the data fetched from movie
+- [x] Create footer element
+ - use the footer component in the layout page, not in page ( same for navBar )
+- [x] Create dynamic detail page
+ - Place a folder in app folder and create a page with [{name}] name
+ - with the use of params, enable it to fetch data of an specific movie from the backend.
+ - seperate the detail page into 4 sections: Header; Image; Info; Related movies
+ - Create each of the sections as components
+- [ ] Implement search function
+- [ ] Create responsive design for alternative devices
+ 

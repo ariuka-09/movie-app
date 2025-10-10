@@ -1,3 +1,4 @@
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,6 +9,8 @@ import {
 import { ModeToggle } from "./Theme";
 import { Movie_Z } from "./Movie_Z";
 import { axiosInstance } from "@/lib/utils";
+
+import {  Genres } from "./Genres";
 
 export async function Navbar() {
   const getGenres = async () => {
@@ -21,29 +24,7 @@ export async function Navbar() {
     <nav className="mx-4 px-16 py-[11.5px] flex justify-between ">
       <Movie_Z></Movie_Z>
       <div className="flex z-10">
-        <DropdownMenu>
-          <DropdownMenuTrigger className="">Genre</DropdownMenuTrigger>
-          <DropdownMenuContent className="flex flex-col bg-gray-100 rounded">
-            <div className="px-10 py-5">
-              <p className="font-bold text-[25px] ">Genres</p>
-              <p>See lists of movies by genre</p>
-            </div>
-            <DropdownMenuSeparator />
-
-            <div className="items-center flex flex-wrap min-w-[fit] w-[40vw] gap-3 p-5">
-              {genres.map((genre: { name: string }) => {
-                return (
-                  <DropdownMenuItem
-                    key={Math.random()}
-                    className="border-[1px] rounded-4xl font-[600] "
-                  >
-                    {genre.name + ` >`}
-                  </DropdownMenuItem>
-                );
-              })}
-            </div>
-          </DropdownMenuContent>
-        </DropdownMenu>
+<Genres genres ={genres} />
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
