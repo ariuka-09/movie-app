@@ -1,8 +1,9 @@
 import { Genres } from "@/components/Genres";
 import { GetGenres } from "@/components/GetGenres";
 import { Movie } from "@/components/MovieCard";
+import * as PaginationButtons from "@/components/PaginationButtons";
 import { MovieType } from "@/lib/movieType";
-import { axiosInstance } from "@/lib/utils";
+import { axiosInstance, next } from "@/lib/utils";
 
 export default async function genrePageDynamic({
   params,
@@ -11,10 +12,12 @@ export default async function genrePageDynamic({
 }) {
   const { id } = await params;
   let page = 1;
+  console.log("page on the main page", page);
   const getMoviesByGenre = async () => {
     const moviesByGenre = await axiosInstance.get(
       `/discover/movie?language=en&with_genres=${id}&page=${page}`
     );
+    console.log("movies by genre", moviesByGenre);
     return moviesByGenre.data;
   };
 
@@ -40,6 +43,9 @@ export default async function genrePageDynamic({
   };
   const theGenre = getCorrectGenre();
 
+  const nextHandler = () => {
+    page += 1;
+  };
   return (
     <div className="pl-10">
       <div>
@@ -59,12 +65,22 @@ export default async function genrePageDynamic({
           <p className="inline ml-21 text-[20px] font-[600] ">
             {moviesByGenre.total_results} titles found in "{theGenre}"
           </p>
-          <div className=" flex flex-wrap gap-8 justify-center w-[100%] ">
-            {moviesByGenre.results
-              .splice(0, 12)
-              .map((movieByGenre: MovieType) => {
+
+          <div>
+            <div className=" flex flex-wrap gap-8 justify-center w-[100%] ">
+              {moviesByGenre.results.map((movieByGenre: MovieType) => {
                 return <Movie movie={movieByGenre} key={Math.random()} />;
               })}
+            </div>
+            <div>
+              <PaginationButtons.Next
+                page={page}
+                id={id}
+              ></PaginationButtons.Next>
+              <PaginationButtons.Previous
+                page={page}
+              ></PaginationButtons.Previous>
+            </div>
           </div>
         </div>
       </div>
