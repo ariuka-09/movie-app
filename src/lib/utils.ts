@@ -11,9 +11,3 @@ export const axiosInstance = axios.create({
     Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
   },
 });
-export const next = (page: number) => {
-  page++;
-};
-export const previous = (page: number) => {
-  page--;
-};

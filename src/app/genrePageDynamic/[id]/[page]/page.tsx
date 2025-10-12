@@ -1,17 +1,17 @@
 import { Genres } from "@/components/Genres";
 import { GetGenres } from "@/components/GetGenres";
 import { Movie } from "@/components/MovieCard";
-import * as PaginationButtons from "@/components/PaginationButtons";
+import { Pagination } from "@/components/PaginationButtons";
 import { MovieType } from "@/lib/movieType";
-import { axiosInstance, next } from "@/lib/utils";
+import { axiosInstance } from "@/lib/utils";
 
 export default async function genrePageDynamic({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; page: number }>;
 }) {
-  const { id } = await params;
-  let page = 1;
+  const { id, page } = await params;
+
   console.log("page on the main page", page);
   const getMoviesByGenre = async () => {
     const moviesByGenre = await axiosInstance.get(
@@ -43,9 +43,6 @@ export default async function genrePageDynamic({
   };
   const theGenre = getCorrectGenre();
 
-  const nextHandler = () => {
-    page += 1;
-  };
   return (
     <div className="pl-10">
       <div>
@@ -72,14 +69,8 @@ export default async function genrePageDynamic({
                 return <Movie movie={movieByGenre} key={Math.random()} />;
               })}
             </div>
-            <div>
-              <PaginationButtons.Next
-                page={page}
-                id={id}
-              ></PaginationButtons.Next>
-              <PaginationButtons.Previous
-                page={page}
-              ></PaginationButtons.Previous>
+            <div className="flex justify-end px-20 py-10">
+              <Pagination id={id} page={page}></Pagination>
             </div>
           </div>
         </div>

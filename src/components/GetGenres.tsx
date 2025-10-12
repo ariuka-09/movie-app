@@ -3,19 +3,23 @@
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 
-export function GetGenres(props: { genres: { name: string; id: number }[] }) {
+export function GetGenres(props: {
+  genres: { name: string; id: number; page: number }[];
+}) {
   const { genres } = props;
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const handleClick = (id: number) => {
     console.log(genres);
-    const genre = genres.filter((wantedGenre: { name: string; id: number }) => {
-      if (id == wantedGenre.id) {
-        return true;
+    const genre = genres.filter(
+      (wantedGenre: { name: string; id: number; page: number }) => {
+        if (id == wantedGenre.id) {
+          return true;
+        }
       }
-    });
+    );
 
-    router.push(`/genrePageDynamic/${genre[0].id}`);
+    router.push(`/genrePageDynamic/${genre[0].id}/1`);
     return id;
   };
   return (
