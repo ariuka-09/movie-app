@@ -1,4 +1,3 @@
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,11 +9,12 @@ import { ModeToggle } from "./Theme";
 import { Movie_Z } from "./Movie_Z";
 import { axiosInstance } from "@/lib/utils";
 
-import {  Genres } from "./Genres";
+import { Genres } from "./Genres";
+import { Search } from "./search";
 
 export async function Navbar() {
   const getGenres = async () => {
-    const response = await axiosInstance.get("genre/movie/list?language=en")
+    const response = await axiosInstance.get("genre/movie/list?language=en");
 
     return response.data.genres;
   };
@@ -24,7 +24,7 @@ export async function Navbar() {
     <nav className="mx-4 px-16 py-[11.5px] flex justify-between ">
       <Movie_Z></Movie_Z>
       <div className="flex z-10">
-<Genres genres ={genres} />
+        <Genres genres={genres} />
 
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ export async function Navbar() {
             />
           </g>
         </svg>
-        <input type="text" placeholder="Search.." />
+        <Search></Search>
       </div>
       <ModeToggle />
     </nav>
