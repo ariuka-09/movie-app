@@ -1,9 +1,11 @@
-import { Genres } from "@/components/Genres";
-import { GetGenres } from "@/components/GetGenres";
+
+
 import { Movie } from "@/components/MovieCard";
 import { Pagination } from "@/components/PaginationButtons";
 import { MovieType } from "@/lib/movieType";
 import { axiosInstance } from "@/lib/utils";
+import { Genres } from "./_feature/Genres";
+import { GetGenres } from "./_feature/GetGenres";
 
 export default async function genrePageDynamic({
   params,
@@ -64,11 +66,7 @@ export default async function genrePageDynamic({
           </p>
 
           <div>
-            <div className=" flex flex-wrap gap-8 justify-center w-[100%] ">
-              {moviesByGenre.results.splice(0,12).map((movieByGenre: MovieType) => {
-                return <Movie movie={movieByGenre} key={Math.random()} />;
-              })}
-            </div>
+              <Genres moviesByGenre={moviesByGenre} ></Genres>
             <div className="flex justify-end px-20 py-10">
               <Pagination id={id} page={page}></Pagination>
             </div>

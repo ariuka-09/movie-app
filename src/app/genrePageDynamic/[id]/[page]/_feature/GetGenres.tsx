@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 export function GetGenres(props: {
   genres: { name: string; id: number; page: number }[];
 }) {
+  
   const { genres } = props;
   const { theme, setTheme } = useTheme();
   const router = useRouter();
