@@ -65,7 +65,7 @@ export default async function genrePageDynamic({
 
           <div>
             <div className=" flex flex-wrap gap-8 justify-center w-[100%] ">
-              {moviesByGenre.results.map((movieByGenre: MovieType) => {
+              {moviesByGenre.results.splice(0,12).map((movieByGenre: MovieType) => {
                 return <Movie movie={movieByGenre} key={Math.random()} />;
               })}
             </div>

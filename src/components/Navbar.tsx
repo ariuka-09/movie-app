@@ -10,7 +10,7 @@ import { Movie_Z } from "./Movie_Z";
 import { axiosInstance } from "@/lib/utils";
 
 import { Genres } from "./Genres";
-import { Search } from "./search";
+import { Search } from "./Search";
 
 export async function Navbar() {
   const getGenres = async () => {
