@@ -28,7 +28,7 @@ export function Movie_Z() {
           strokeLinejoin="round"
         />
       </svg>
-      <p className="text-[#4338CA] text-[16px] italic font-[700] ">Movie Z</p>
+      <p className="text-[#4338CA] text-[16px] italic font-[700] ">Movie Zjhgfxdghkjhgfxdghgh</p>
     </div>
   );
 }
