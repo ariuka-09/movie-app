@@ -1,6 +1,7 @@
 import { axiosInstance } from "@/lib/utils";
 import React from 'react'
 import { Trailer } from "./Trailer";
+import { error } from "console";
 
 export async function DetailImages({ id }: { id: string }) {
   const getImages = async () => {
@@ -16,24 +17,30 @@ export async function DetailImages({ id }: { id: string }) {
         return true;
       }
     })
-    return trailer[0].key;
+    console.log("trailer",trailer)
+    return trailer;
   };
   const trailer = await getTrailer();
  console.log("trailer", trailer)
   return (
-    <div className="flex gap-[2%] w-full">
+    <div className="flex gap-[2%] w-full h-full">
       <img
         className="w-[30%] "
         src={" https://image.tmdb.org/t/p/w500" + movie.poster_path}
         alt=""
       />
-      <div>
+      <div className="relative w-[100%] ">
       <img
-        className="w-[68%] "
+        className="w-[100%] absolute right-0  h-full"
         src={" https://image.tmdb.org/t/p/original" + movie.backdrop_path}
         alt=""
       />
-      <Trailer trailer={trailer}></Trailer>
+     {
+      trailer.length != 0 ? <Trailer trailer={trailer}></Trailer>: <div>Not found  </div>
+     }
+     
+     
+  
       </div>
      
       
