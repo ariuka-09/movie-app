@@ -45,9 +45,9 @@ export function Trailer (props:{trailer: {0:{key:string}}}){
     <Dialog>
       <form className=''>
         <DialogTrigger asChild>
-        <button className='absolute left-10 bottom-10 ' onClick={() =>{playTrailer()}}>
-        Watch Trailer
-          </button>
+     
+        <Button className='absolute bottom-8 left-12 cursor-pointer' variant="outline">Open Dialog</Button>
+   
         </DialogTrigger>
         <DialogContent className="sm:max-w-[70%]">
         <ReactPlayer className='' width={'100%'} height={600} src={`https://www.youtube.com/watch?v=${trailer[0].key}`} />
