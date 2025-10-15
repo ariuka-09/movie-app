@@ -12,16 +12,44 @@ export async function DetailImages({ id }: { id: string }) {
 
   const getTrailer = async () => {
     const response = await axiosInstance.get(`/movie/${id}/videos?language=en-US`);
-    const trailer = response.data.results.filter((element:{key:string; name:string})=>{
-      if(element.name=="Official Trailer"){
+    const trailer = response.data.results.filter((element:{key:string; name:string; official:boolean})=>{
+      const trailerName = element.name.toLocaleLowerCase();
+      if(trailerName.includes("trailer") ){
         return true;
       }
     })
-    console.log("trailer",trailer)
+    console.log("Trailer",response)
     return trailer;
   };
-  const trailer = await getTrailer();
- console.log("trailer", trailer)
+ 
+  let trailer = await getTrailer();
+if(!trailer){
+  const getTrailer = async () => {
+    const response = await axiosInstance.get(`/movie/${id}/videos?language=en-US`);
+    const trailer = response.data.results.filter((element:{key:string; name:string; official:boolean})=>{
+      if(element.official==true ){
+        return true;
+      }
+    })
+    console.log("Trailer",trailer)
+    return trailer;
+  };
+ 
+  trailer = await getTrailer();
+}
+  if(!trailer){
+    const getTrailer = async () => {
+      const response = await axiosInstance.get(`/movie/${id}/videos?language=en-US`);
+      const trailer = response.data.results.filter((element:{key:string; name:string; official:boolean})=>{
+        if(element.official==false ){
+          return true;
+        }
+      })
+      console.log("Trailer",response)
+      return trailer;
+    };
+    trailer = await getTrailer();
+  }
   return (
     <div className="flex gap-[2%] w-full h-full">
       <img

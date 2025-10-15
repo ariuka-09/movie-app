@@ -68,9 +68,11 @@ export async function DetailTexts({ id }: { id: string }) {
       </div>
       <div className="flex gap-3">
         <p>Stars</p>
-        <p>{creditInfo.cast[0].name} </p>
-        <p>{creditInfo.cast[1].name} </p>
-        <p>{creditInfo.cast[2].name} </p>
+        {creditInfo.cast[0]? <p>{creditInfo.cast[0].name} </p>: null}
+        {creditInfo.cast[1]? <p>{creditInfo.cast[1].name} </p>: null}
+        {creditInfo.cast[2]? <p>{creditInfo.cast[2].name} </p>: null}
+       
+      
       </div>
       <div></div>
       <div></div>
