@@ -20,7 +20,7 @@ export function GetGenres(props: {
       }
     );
 
-    router.push(`/genrePageDynamic/${genre[0].id}/1`);
+    router.push(`/genrePageDynamic?id=${genre[0].id}&page=1`);
     return id;
   };
   return (

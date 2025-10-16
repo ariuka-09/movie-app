@@ -96,6 +96,7 @@ export default async function genrePageDynamic({
     return response.data;
   };
   const genres = await getGenres();
+  console.log("codee", genres)
   const getCorrectGenre = () => {
     const theCorrectGenre = genres.genres.filter(
       (genre: { id: number; name: string }) => {
