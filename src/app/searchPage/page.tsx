@@ -3,7 +3,7 @@ import { Movie } from "@/components/MovieCard";
 import { MovieType } from "@/lib/movieType";
 import { axiosInstance } from "@/lib/utils";
 import { Pagination } from "./_feature/Pagination";
-import { GetGenres } from "../genrePageDynamic/[id]/[page]/_feature/GetGenres";
+import { GetGenres } from "../genrePageDynamic/_feature/GetGenres";
 
 type searchPageProps ={
     searchParams : Promise<{value:string; page:number} >
