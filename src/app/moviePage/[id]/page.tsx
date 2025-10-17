@@ -1,14 +1,14 @@
+"use client"
 import { DetailHeader } from "@/components/DetailHeader";
 import { DetailImages } from "@/components/DetailImages";
 import { DetailRelatedMovies } from "@/components/DetailRelatedMovies";
 import { DetailTexts } from "@/components/DetailTexts";
+import { use } from "react"; 
 
-export default async function moviePage({
+export default  function moviePage({
   params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
+}: any) {
+  const { id } =  params;
 
   return (
     <div>

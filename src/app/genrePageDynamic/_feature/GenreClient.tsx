@@ -10,8 +10,8 @@ export function GenreClient(props:{
 }){
 const {page, id, genres} = props
 
-const getMoviesByGenre =  () => {
-    const moviesByGenre = axiosInstance.get(
+const getMoviesByGenre =  async () => {
+    const moviesByGenre =  await axiosInstance.get(
       `/discover/movie?language=en&with_genres=${id}&page=${page}`
     );
     return moviesByGenre;
@@ -43,14 +43,15 @@ console.log("data",data)
         </div>
         <div className="flex gap-10">
           <div className=" w-[30%]">
-            <GetGenres genres={genres}></GetGenres>
+            <GetGenres genres={genres.genres}></GetGenres>
           </div>
           <div className="flex flex-col gap-8 justify-center w-[65%]">
-            <p className="inline ml-21 text-[20px] font-[600] ">
-              {data.total_results} titles found in "{theGenre}"
-            </p>
+            {/* {data &&  <p className="inline ml-21 text-[20px] font-[600] ">
+              {data?.data.results.name} titles found in "{theGenre}"
+            </p> } */}
+           
             <div>
-                <Genres moviesByGenre={moviesByGenre} ></Genres>
+                <Genres moviesByGenre={data} ></Genres>
               <div className="flex justify-end px-20 py-10">
                 <Pagination id={id} page={page}></Pagination>
               </div>
