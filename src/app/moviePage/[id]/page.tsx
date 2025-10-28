@@ -1,4 +1,3 @@
-"use client"
 import { DetailHeader } from "@/components/DetailHeader";
 import { DetailImages } from "@/components/DetailImages";
 import { DetailRelatedMovies } from "@/components/DetailRelatedMovies";

@@ -3,6 +3,8 @@ import { MovieType } from "@/lib/movieType";
 
 export function Genres (props:{moviesByGenre:any}){
     const {moviesByGenre} = props
+    console.log("MoviesbyGenre", moviesByGenre);
+    
     return(
         <div className=" flex flex-wrap gap-8 justify-center w-[100%] ">
         {moviesByGenre.results.splice(0,12).map((movieByGenre: MovieType) => {
