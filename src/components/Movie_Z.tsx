@@ -6,6 +6,7 @@ export function Movie_Z() {
   const router = useRouter();
   const handleOnClick = () => {
     router.push("/");
+    console.log("working");
   };
   return (
     <div

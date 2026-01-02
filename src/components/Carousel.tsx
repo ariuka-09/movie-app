@@ -11,8 +11,8 @@ import {
 export function CarouselComponent() {
   return (
     <div className="flex justify-center ">
-      <Carousel 
-      opts={{loop:true}}
+      <Carousel
+        opts={{ loop: true }}
         className="relative"
         plugins={[
           Autoplay({

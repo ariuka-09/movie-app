@@ -22,7 +22,7 @@ export async function Navbar() {
 
   return (
     <nav className="mx-4 px-16 py-[11.5px] flex justify-between ">
-      <Movie_Z></Movie_Z>
+      <Movie_Z />
       <div className="flex z-10">
         <Genres genres={genres} />
 
@@ -41,7 +41,7 @@ export async function Navbar() {
             />
           </g>
         </svg>
-        <Search></Search>
+        <Search />
       </div>
       <ModeToggle />
     </nav>

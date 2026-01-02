@@ -1,81 +1,87 @@
+"use client";
+
 import { axiosInstance } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
-export async function DetailTexts({ id }: { id: string }) {
-  const getInfo = async () => {
-    const info = await axiosInstance.get(`movie/${id}?language=en-US`);
+export function DetailTexts({ id }: { id: string }) {
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-      return info.data;
-  };    
-   const info = await getInfo();
+  useEffect(() => {
+    const fetchAllData = async () => {
+      try {
+        setLoading(true);
+        // Fetch both Info and Credits simultaneously for better performance
+        const [infoRes, creditRes] = await Promise.all([
+          axiosInstance.get(`movie/${id}?language=en-US`),
+          axiosInstance.get(`/movie/${id}/credits?language=en-US`),
+        ]);
 
-  const getCreditInfo = async () => {
-    const creditInfo = await axiosInstance.get(
-                `/movie/${id}/credits?language=en-US`
-    );
-    return creditInfo.data;
-  };
-  const creditInfo = await getCreditInfo();
+        // Process the data once here instead of using separate states/effects
+        const crew = creditRes.data.crew || [];
+        const directors = crew.filter((m: any) => m.job === "Director");
+        const writers = crew.filter(
+          (m: any) =>
+            m.department === "Writing" || m.department === "Screenplay"
+        );
 
-  const getDirectors = () => {
-    const directors = creditInfo.crew.filter((member: { job: string }) => {
-      if (member.job === "Director") {
-        return true;
+        setData({
+          info: infoRes.data,
+          credits: creditRes.data,
+          directors,
+          writers,
+        });
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
-    });
-    console.log(creditInfo);
-    return directors;
-  };
-  const directors = getDirectors();
+    };
 
-  const getWriters = () => {
-    const directors = creditInfo.crew.filter(
-      (member: { department: string }) => {
-        if (member.department === "Screenplay") {
-          return true;
-        }
-      }
-    );
-    console.log("writers", directors);
-    return directors;
-  };
-  const writers = await getWriters();
+    if (id) fetchAllData();
+  }, [id]); // Only loops if ID changes (which is what we want)
+
+  if (loading || !data) return <p>Loading...</p>;
+
+  const { info, credits, directors, writers } = data;
 
   return (
     <div className="flex flex-col gap-5 mt-8">
+      {/* Genres */}
       <div className="flex gap-2">
-        {info.genres.map((genre: { name: string }) => {
-          return (
-            <div key={Math.random()} className="border rounded-2xl px-2 text-[12px] ">
-              {genre.name}
-            </div>
-          );
-        })}
+        {info.genres.map((genre: any) => (
+          <div key={genre.id} className="border rounded-2xl px-2 text-[12px]">
+            {genre.name}
+          </div>
+        ))}
       </div>
-      <div>
-        <p>{info.overview} </p>
-      </div>
+
+      {/* Overview */}
+      <p>{info.overview}</p>
+
+      {/* Directors */}
       <div className="flex gap-3">
-        <p>Director</p>
-        {directors.map((director: { name: string }) => {
-          return <div key={Math.random()} >{director.name}</div>;
-        })}
+        <p className="font-bold">Director</p>
+        {directors.map((d: any) => (
+          <div key={d.id}>{d.name}</div>
+        ))}
       </div>
+
+      {/* Writers */}
       <div className="flex gap-3">
-        <p>Writers</p>
-        {writers.map((writer: { name: string }) => {
-          return <div key={Math.random()} >{writer.name} </div>;
-        })}
+        <p className="font-bold">Writers</p>
+        {writers.map((w: any, i: number) => (
+          <div key={i}>{w.name}</div>
+        ))}
       </div>
+
+      {/* Stars */}
       <div className="flex gap-3">
-        <p>Stars</p>
-        {creditInfo.cast[0]? <p>{creditInfo.cast[0].name} </p>: null}
-        {creditInfo.cast[1]? <p>{creditInfo.cast[1].name} </p>: null}
-        {creditInfo.cast[2]? <p>{creditInfo.cast[2].name} </p>: null}
-       
-      
+        <p className="font-bold">Stars</p>
+        {credits.cast.slice(0, 3).map((actor: any) => (
+          <p key={actor.id}>{actor.name}</p>
+        ))}
       </div>
-      <div></div>
-      <div></div>
     </div>
   );
 }

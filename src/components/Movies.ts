@@ -7,20 +7,26 @@ type MoviesCategory = {
 
 export async function Movies() {
   const getUpcomingMovies = async () => {
-    const response = await axiosInstance.get(`movie/upcoming?language=en-US&page=1`)
+    const response = await axiosInstance.get(
+      `movie/upcoming?language=en-US&page=1`
+    );
     return response.data.results;
   };
 
   const upComingMovies = await getUpcomingMovies();
 
   const getPopularMovies = async () => {
-    const response = await axiosInstance.get(`movie/popular?language=en-US&page=1`)
+    const response = await axiosInstance.get(
+      `movie/popular?language=en-US&page=1`
+    );
     return response.data.results;
   };
   const popularMovies = await getPopularMovies();
 
   const getTopRatedMovies = async () => {
-    const response = await axiosInstance.get(`movie/top_rated?language=en-US&page=1`)
+    const response = await axiosInstance.get(
+      `movie/top_rated?language=en-US&page=1`
+    );
     return response.data.results;
   };
   const topRatedMovies = await getTopRatedMovies();

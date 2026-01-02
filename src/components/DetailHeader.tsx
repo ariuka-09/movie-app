@@ -1,32 +1,40 @@
+"use client";
 import { axiosInstance } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
-export async function DetailHeader({ id }: { id: string }) {
+export function DetailHeader({ id }: { id: string }) {
+  const [selectedMovie, setSelectedMovie] = useState<any>();
   const getSelectedMovie = async () => {
-    const response = await axiosInstance.get(`movie/${id}?language=en-US`)
-    return response.data;
+    const response = await axiosInstance.get(`movie/${id}?language=en-US`);
+    setSelectedMovie(response.data);
   };
-  const selectedMovie = await getSelectedMovie();
+  useEffect(() => {
+    getSelectedMovie();
+  }, []);
+
+  if (!selectedMovie) {
+    return null;
+  }
   return (
     <div className="flex justify-between mb-6">
-       <div>
+      <div>
         <p className="text-[36px] font-[700] ">{selectedMovie.title} </p>
-            <div className="flex gap-2">
-           <p> {selectedMovie.release_date}</p>
-            <p>·</p>
+        <div className="flex gap-2">
+          <p> {selectedMovie.release_date}</p>
+          <p>·</p>
           <div className="flex gap-1">
-              <p>{Math.floor(selectedMovie.runtime / 60)}h</p>
-              <p>{selectedMovie.runtime % 60}m </p>
+            <p>{Math.floor(selectedMovie.runtime / 60)}h</p>
+            <p>{selectedMovie.runtime % 60}m </p>
           </div>
         </div>
-
       </div>
       <div className="">
         <p>Rating</p>
 
         <div className=" flex items-center gap-2">
           <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="28"
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
             height="28"
             viewBox="0 0 28 28"
             fill="none"

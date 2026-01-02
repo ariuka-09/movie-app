@@ -6,13 +6,13 @@ import { useState } from "react";
 export function Pagination({ page, id }: { page: number; id: string }) {
   const router = useRouter();
   const handleOnNext = () => {
-    router.push(`/genrePageDynamic/${id}/${Number(Page) + Number(1)}`);
+    router.push(`/genrePageDynamic?id=${id}&page=${Number(Page) + Number(1)}`);
   };
   const handleOnPrevious = () => {
-    router.push(`/genrePageDynamic/${id}/${Number(Page) - 1}`);
+    router.push(`/genrePageDynamic?id=${id}&page=${Number(Page) - 1}`);
   };
   const handleOnDynamic = (Page: number) => {
-    router.push(`/genrePageDynamic/${id}/${Number(Page)}`);
+    router.push(`/genrePageDynamic?id=${id}&page=${Number(Page)}`);
   };
   const [Page, setPage] = useState(Number(page));
   const Next = () => {
