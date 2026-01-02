@@ -1,9 +1,10 @@
 "use client";
+import { MovieType } from "@/lib/movieType";
 import { axiosInstance } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export function DetailHeader({ id }: { id: string }) {
-  const [selectedMovie, setSelectedMovie] = useState<any>();
+  const [selectedMovie, setSelectedMovie] = useState<MovieType | null>();
   const getSelectedMovie = async () => {
     const response = await axiosInstance.get(`movie/${id}?language=en-US`);
     setSelectedMovie(response.data);
@@ -23,8 +24,8 @@ export function DetailHeader({ id }: { id: string }) {
           <p> {selectedMovie.release_date}</p>
           <p>·</p>
           <div className="flex gap-1">
-            <p>{Math.floor(selectedMovie.runtime / 60)}h</p>
-            <p>{selectedMovie.runtime % 60}m </p>
+            <p>{Math.floor(Number(selectedMovie.runtime) / 60)}h</p>
+            <p>{Number(selectedMovie.runtime) % 60}m </p>
           </div>
         </div>
       </div>

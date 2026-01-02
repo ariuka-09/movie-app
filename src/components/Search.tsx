@@ -152,7 +152,7 @@ export function Search() {
               onClick={() => handleSearchNavigation(text)}
               className="p-3 text-xs font-bold text-center bg-gray-50 dark:bg-[#1c1c1e] text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
-              See all results for "{text}"
+              <span>See all results for &quot;{text}&quot;</span>
             </button>
           </div>
         </div>

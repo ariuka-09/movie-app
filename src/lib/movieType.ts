@@ -4,4 +4,6 @@ export type MovieType = {
   vote_average: number;
   poster_path: string;
   release_date: string;
+  runtime: string;
+  vote_count: number;
 };

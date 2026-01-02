@@ -64,7 +64,7 @@ export function GenreClient(props: {
             </p> } */}
 
           <div>
-            {data && <Genres moviesByGenre={data.data}></Genres>}
+            {data && <Genres moviesByGenre={data.data.results}></Genres>}
 
             <div className="flex justify-end px-20 py-10">
               <Pagination id={id} page={page}></Pagination>
