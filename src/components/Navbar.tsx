@@ -11,6 +11,7 @@ import { axiosInstance } from "@/lib/utils";
 
 import { Genres } from "./Genres";
 import { Search } from "./Search";
+import { Suspense } from "react";
 
 export async function Navbar() {
   const getGenres = async () => {
@@ -41,7 +42,9 @@ export async function Navbar() {
             />
           </g>
         </svg>
-        <Search />
+        <Suspense>
+          <Search />
+        </Suspense>
       </div>
       <ModeToggle />
     </nav>
